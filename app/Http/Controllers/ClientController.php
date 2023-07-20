@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Client;
 use App\Models\Stylist;
-
+use Carbon\Carbon;
 
 class ClientController extends Controller
 
@@ -21,6 +21,16 @@ class ClientController extends Controller
             ->with('appointments.stylist', 'appointments.service')
             ->get());
     }
+
+	public function indexToday()
+	{
+   	 $today = Carbon::today()->toDateString();
+  	  return response()->json(Client::whereDate('inicio', $today)
+        ->orderBy('inicio', 'DESC')
+        ->with('appointments.stylist', 'appointments.service')
+        ->get());
+	}
+
 
 
     public function showStylist($stylist)

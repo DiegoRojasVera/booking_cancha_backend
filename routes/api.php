@@ -17,6 +17,15 @@ Route::get('services', 'App\Http\Controllers\ServicesController@index');
 Route::post('services', 'App\Http\Controllers\ServicesController@store');
 Route::get('services/{id}', 'App\Http\Controllers\ServicesController@show');
 
+Route::get('grafico', 'App\Http\Controllers\AppointmentController@index');
+Route::get('monthly-summary/{month?}', 'App\Http\Controllers\AppointmentController@monthlySummary');
+Route::get('controlmesservice/{month}/{service?}', 'App\Http\Controllers\AppointmentController@controlmesservice');
+Route::get('controlmesstylist/{month}/{stylist?}', 'App\Http\Controllers\AppointmentController@controlmesstylist');
+Route::get('controlmesstulistlist/{month}', 'App\Http\Controllers\AppointmentController@controlmesstulistlist');
+Route::get('controlmesservicelist/{month?}','App\Http\Controllers\AppointmentController@controlmesservicelist');
+Route::get('cantidadmeslist','App\Http\Controllers\AppointmentController@cantidadmeslist');
+
+
 
 Route::post('/puntuacion', 'App\Http\Controllers\PuntuacionController@store'); // Guardar una nueva puntuación
 Route::get('/puntuacion/promedio/{stylist}', 'App\Http\Controllers\PuntuacionController@promedioPorStylist'); // Obtener el promedio de puntuaciones para un stylist en particular
@@ -37,6 +46,7 @@ Route::get('postsnologin', 'App\Http\Controllers\PostController@indexnologin');
 
 
 Route::get('clients', 'App\Http\Controllers\ClientController@index');
+Route::get('clientsday', 'App\Http\Controllers\ClientController@indexToday');
 Route::get('clientsStylist/{stylist}', 'App\Http\Controllers\ClientController@showStylist');
 Route::get('clients/{email}', 'App\Http\Controllers\ClientController@show'); // get single client
 Route::get('client/{stylist}', 'App\Http\Controllers\ClientController@showAll'); // get all client showallID
